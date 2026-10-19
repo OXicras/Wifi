@@ -16,7 +16,9 @@ void setup()
     delay(500);
   }
 
-  Serial.printf("\n\rConectado com sucesso");
+  Serial.printf("\n\rConectado com sucesso\n\r");
+  Serial.printf("Endereco IP: %s\n\r", WiFi.localIP().toString().c_str());
+  Serial.printf("Endereco MAC: %s\n\r", WiFi.macAddress().c_str());
 }
 
 void loop() 
