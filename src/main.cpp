@@ -2,6 +2,8 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 
+String pedirParaApiClima(String);
+
 const char* nomeRedeWiFi = "SENAI EDUCACIONAL";
 const char* senhaRedeWiFi = "info@134";
 const String enderecoAPI = "https://wttr.in/Sao+Caetano+do+Sul?m&lang=pt&format=";
@@ -21,11 +23,16 @@ void setup()
   Serial.printf("\n\rConectado com sucesso\n\r");
   Serial.printf("Endereco IP: %s\n\r", WiFi.localIP().toString().c_str());
   Serial.printf("Endereco MAC: %s\n\r", WiFi.macAddress().c_str());
+
+  String clima;
+  clima = pedirParaApiClima("%C");
+
+  Serial.printf("Condicão climática para hoje: %s\n\r", clima.c_str());
 }
 
 void loop() {}
 
-String pedirParaApiCLima(String codigo)
+String pedirParaApiClima(String codigo)
 {
   HTTPClient http;
   http.begin(enderecoAPI + codigo);
