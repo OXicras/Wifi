@@ -25,9 +25,13 @@ void setup()
   Serial.printf("Endereco MAC: %s\n\r", WiFi.macAddress().c_str());
 
   String clima;
+  int temperatura, sensacaoTermica;
   clima = pedirParaApiClima("%C");
+  temperatura = pedirParaApiClima("%t").toInt();
+  sensacaoTermica = pedirParaApiClima("%f").toInt();
 
   Serial.printf("Condicão climática para hoje: %s\n\r", clima.c_str());
+  Serial.printf("Temperatura Atual %d° C e sensacão térmica de %d° C", temperatura, sensacaoTermica);
 }
 
 void loop() {}
